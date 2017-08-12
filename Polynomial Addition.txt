@@ -1,0 +1,236 @@
+01.#include<stdio.h>    
+02.    
+03.int main(){    
+04.    const int MAX_TERM=100;    
+05.    typedef struct {    
+06.        float coef;    
+07.        unsigned int expon;    
+08.    }polynomial;    
+09.    polynomial p[MAX_TERM];    
+10.    polynomial *A=p,*a,*B,*b,*c,*point;    
+11.    int n,m,i,temp;    
+12.    scanf("%d",&n);    
+13.    a=A+n-1;    
+14.    for(i=0 ; i<n ; i++){    
+15.        scanf("%f %d",&p[i].coef,&p[i].expon);    
+16.    }    
+17.    scanf("%d",&m);    
+18.    B=a+1;    
+19.    b=B+m-1;    
+20.    for(i=i ; i<m+n ; i++){    
+21.        scanf("%f %d",&p[i].coef,&p[i].expon);    
+22.    }    
+23.    c=b+1;    
+24.    while(A<=a && B<=b){    
+25.        if(A->expon>B->expon){    
+26.            c->coef=A->coef;    
+27.            c->expon=A->expon;    
+28.            A++;    
+29.        }    
+30.        else if(A->expon<B->expon){    
+31.            c->coef=B->coef;    
+32.            c->expon=B->expon;    
+33.            B++;    
+34.        }    
+35.        else{    
+36.            c->coef=A->coef+B->coef;    
+37.            c->expon=A->expon;    
+38.            A++;    
+39.            B++;    
+40.        }    
+41.        if(c->coef!=0)    
+42.            c++;    
+43.    }    
+44.    if(A<=a){    
+45.        c->coef=A->coef;    
+46.        c->expon=A->expon;    
+47.        A++;    
+48.        c++;    
+49.    }    
+50.    if(B<=b){    
+51.        c->coef=B->coef;    
+52.        c->expon=B->expon;    
+53.        B++;    
+54.        c++;    
+55.    }    
+56.//¦Lµª®×  
+57.    i=0;    
+58.    temp=0;    
+59.    if(i<n-1){    
+60.        if(p[i].coef==0){    
+61.            printf("%.2f ",p[i].coef);    
+62.                temp++;    
+63.        }    
+64.            else{    
+65.                if(p[i].expon==0){    
+66.                    printf("%.2f ",p[i].coef);    
+67.                }    
+68.                else if(p[i].expon==1){    
+69.                    printf("%.2fx ",p[i].coef);    
+70.                }    
+71.                else{    
+72.                    printf("%.2fx^%d ",p[i].coef,p[i].expon);    
+73.                }    
+74.                temp++;    
+75.            }    
+76.        for(i=1 ; i<n-1 ; i++){    
+77.            if(p[i].coef==0){}    
+78.            else{    
+79.                if(p[i].expon==0){    
+80.                    printf("%+.2f ",p[i].coef);    
+81.                }    
+82.                else if(p[i].expon==1){    
+83.                    printf("%+.2fx ",p[i].coef);    
+84.                }    
+85.                else{    
+86.                    printf("%+.2fx^%d ",p[i].coef,p[i].expon);    
+87.                }    
+88.                temp++;    
+89.            }    
+90.        }    
+91.    }    
+92.    if(p[i].coef==0){}    
+93.        else{    
+94.            if(temp){    
+95.                if(p[i].expon==0){    
+96.                    printf("%+.2f",p[i].coef);    
+97.                }    
+98.                else if(p[i].expon==1){    
+99.                    printf("%+.2fx",p[i].coef);    
+100.                }    
+101.                else{    
+102.                    printf("%+.2fx^%d",p[i].coef,p[i].expon);    
+103.                }    
+104.            }    
+105.            else{    
+106.                if(p[i].expon==0){    
+107.                    printf("%.2f",p[i].coef);    
+108.                }    
+109.                else if(p[i].expon==1){    
+110.                    printf("%.2fx",p[i].coef);    
+111.                }    
+112.                else{    
+113.                    printf("%.2fx^%d",p[i].coef,p[i].expon);    
+114.                }    
+115.            }    
+116.        }    
+117.        i++;    
+118.    printf("\n");    
+119.    temp=0;    
+120.    if(i<m+n-1){    
+121.        if(p[i].coef==0){    
+122.            printf("%.2f ",p[i].coef);    
+123.            temp++;    
+124.        }    
+125.            else{    
+126.                if(p[i].expon==0){    
+127.                    printf("%.2f ",p[i].coef);    
+128.                }    
+129.                else if(p[i].expon==1){    
+130.                    printf("%.2fx ",p[i].coef);    
+131.                }    
+132.                else{    
+133.                    printf("%.2fx^%d ",p[i].coef,p[i].expon);    
+134.                }    
+135.                temp++;    
+136.            }    
+137.        for(i=n+1 ; i<m+n-1 ; i++){    
+138.            if(p[i].coef==0){}    
+139.            else{    
+140.                if(p[i].expon==0){    
+141.                    printf("%+.2f ",p[i].coef);    
+142.                }    
+143.                else if(p[i].expon==1){    
+144.                    printf("%+.2fx ",p[i].coef);    
+145.                }    
+146.                else{    
+147.                    printf("%+.2fx^%d ",p[i].coef,p[i].expon);    
+148.                }    
+149.                temp++;    
+150.            }    
+151.        }    
+152.    }    
+153.    if(p[i].coef==0){}    
+154.        else{    
+155.            if(temp){    
+156.                if(p[i].expon==0){    
+157.                    printf("%+.2f",p[i].coef);    
+158.                }    
+159.                else if(p[i].expon==1){    
+160.                    printf("%+.2fx",p[i].coef);    
+161.                }    
+162.                else{    
+163.                    printf("%+.2fx^%d",p[i].coef,p[i].expon);    
+164.                }    
+165.            }    
+166.            else{    
+167.                if(p[i].expon==0){    
+168.                    printf("%.2f",p[i].coef);    
+169.                }    
+170.                else if(p[i].expon==1){    
+171.                    printf("%.2fx",p[i].coef);    
+172.                }    
+173.                else{    
+174.                    printf("%.2fx^%d",p[i].coef,p[i].expon);    
+175.                }    
+176.            }    
+177.        }    
+178.        i++;    
+179.    printf("\n");    
+180.    point=b+1;    
+181.    temp=0;    
+182.    if(point<c-1){    
+183.        if(point->expon==0){    
+184.            printf("%.2f ",point->coef);    
+185.        }    
+186.        else if(point->expon==1){    
+187.            printf("%.2fx ",point->coef);    
+188.        }    
+189.        else{    
+190.            printf("%.2fx^%d ",point->coef,point->expon);    
+191.        }    
+192.        point++;    
+193.        temp++;    
+194.        for( ;point<c-1 ; point++){    
+195.            if(point->coef==0){}    
+196.            else{    
+197.                if(point->expon==0){    
+198.                    printf("%+.2f ",point->coef);    
+199.                }    
+200.                else if(point->expon==1){    
+201.                    printf("%+.2fx ",point->coef);    
+202.                }    
+203.                else{    
+204.                    printf("%+.2fx^%d ",point->coef,point->expon);    
+205.                }    
+206.            }    
+207.        }    
+208.    }    
+209.    if(point->coef==0){}    
+210.        else{    
+211.            if(temp){    
+212.                if(point->expon==0){    
+213.                    printf("%+.2f",point->coef);    
+214.                }    
+215.                else if(point->expon==1){    
+216.                    printf("%+.2fx",point->coef);    
+217.                }    
+218.                else{    
+219.                    printf("%+.2fx^%d",point->coef,point->expon);    
+220.                }    
+221.            }    
+222.            else{    
+223.                if(point->expon==0){    
+224.                    printf("%.2f",point->coef);    
+225.                }    
+226.                else if(point->expon==1){    
+227.                    printf("%.2fx",point->coef);    
+228.                }    
+229.                else{    
+230.                    printf("%.2fx^%d",point->coef,point->expon);    
+231.                }    
+232.            }    
+233.        }    
+234.    printf("\n");    
+235.    return 0;    
+236.}  
